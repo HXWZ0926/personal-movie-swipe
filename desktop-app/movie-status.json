@@ -1,0 +1,28 @@
+﻿{
+    "watched":  [
+                    "movie-dune-2",
+                    "tv-breaking-bad",
+                    "movie-inception",
+                    "tv-friends",
+                    "movie-spider-verse",
+                    "movie-spirited-away",
+                    "movie-everything",
+                    "movie-before-sunrise",
+                    "movie-chungking",
+                    "movie-oppenheimer",
+                    "movie-her",
+                    "movie-coco",
+                    "tv-silicon-valley",
+                    "movie-mad-max",
+                    "movie-parasite",
+                    "tv-the-bear",
+                    "tv-stranger-things"
+                ],
+    "wantToWatch":  [
+                        "tv-better-call-saul",
+                        "tv-dark"
+                    ],
+    "skipped":  [
+                    "tv-kingdom"
+                ]
+}

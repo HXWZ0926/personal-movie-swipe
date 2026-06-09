@@ -1,0 +1,9 @@
+﻿{
+    "allowRepeatRecommendations":  false,
+    "onlyHighRated":  true,
+    "tmdbApiKey":  "",
+    "tmdbBearerToken":  "",
+    "omdbApiKey":  "",
+    "traktClientId":  "",
+    "watchmodeApiKey":  ""
+}
