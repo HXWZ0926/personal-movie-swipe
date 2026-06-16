@@ -47,7 +47,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <main className="min-h-screen pb-28 sm:pb-8">
+    <main className="min-h-screen pb-[calc(6.5rem+env(safe-area-inset-bottom))] sm:pb-8">
       <Header />
 
       <div className="mx-auto grid w-full max-w-5xl gap-6 px-4 sm:px-6">

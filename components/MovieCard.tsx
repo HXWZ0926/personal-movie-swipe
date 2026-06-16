@@ -50,12 +50,12 @@ export function MovieCard({ movie, animation = "idle", reason, onSwipe }: MovieC
       onPointerUp={finishDrag}
       onPointerCancel={finishDrag}
       style={dragStyle}
-      className={`glass relative mx-auto h-[610px] w-full max-w-[430px] overflow-hidden rounded-[28px] shadow-[0_30px_90px_rgba(0,0,0,.42)] transition-all duration-300 ease-out ${animationClass[animation]}`}
+      className={`glass relative mx-auto h-[min(610px,calc(100svh-295px))] min-h-[470px] w-full max-w-[430px] touch-pan-y overflow-hidden rounded-[26px] shadow-[0_24px_70px_rgba(0,0,0,.36)] transition-all duration-300 ease-out sm:h-[610px] sm:rounded-[28px] sm:shadow-[0_30px_90px_rgba(0,0,0,.42)] ${animationClass[animation]}`}
     >
       {movie.posterUrl ? (
-        <img src={movie.posterUrl} alt={`${movie.title} 海报`} className="poster-mask h-[390px] w-full object-cover" draggable={false} />
+        <img src={movie.posterUrl} alt={`${movie.title} 海报`} className="poster-mask h-[60%] w-full object-cover sm:h-[390px]" draggable={false} />
       ) : (
-        <div className="poster-mask grid h-[390px] w-full place-items-center bg-white/10 text-white/45">无海报</div>
+        <div className="poster-mask grid h-[60%] w-full place-items-center bg-white/10 text-white/45 sm:h-[390px]">无海报</div>
       )}
 
       <div className="absolute left-0 right-0 top-0 flex items-start justify-between p-4">
@@ -97,13 +97,13 @@ export function MovieCard({ movie, animation = "idle", reason, onSwipe }: MovieC
           ))}
         </div>
 
-        <h1 className="text-3xl font-semibold leading-tight tracking-normal">{movie.title}</h1>
+        <h1 className="text-[1.7rem] font-semibold leading-tight tracking-normal sm:text-3xl">{movie.title}</h1>
         <p className="mt-1 text-sm text-white/55">
           {movie.originalTitle} · {movie.year || "未知年份"} · {movie.source ?? "本地库"}
         </p>
 
-        <p className="mt-4 line-clamp-3 text-sm leading-6 text-white/70">{movie.description}</p>
-        {reason ? <p className="mt-3 rounded-[16px] bg-white/10 px-3 py-2 text-xs leading-5 text-cyan-50/80">{reason}</p> : null}
+        <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/70 sm:mt-4 sm:line-clamp-3">{movie.description}</p>
+        {reason ? <p className="mt-3 line-clamp-2 rounded-[16px] bg-white/10 px-3 py-2 text-xs leading-5 text-cyan-50/80">{reason}</p> : null}
       </div>
     </article>
   );

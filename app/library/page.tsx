@@ -69,7 +69,7 @@ export default function LibraryPage() {
   }, [activeTab, store.allMovies, store.status]);
 
   return (
-    <main className="min-h-screen pb-28 sm:pb-8">
+    <main className="min-h-screen pb-[calc(6.5rem+env(safe-area-inset-bottom))] sm:pb-8">
       <Header />
 
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 sm:px-6">

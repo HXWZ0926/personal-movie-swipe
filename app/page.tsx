@@ -137,16 +137,18 @@ export default function HomePage() {
   const currentReview = detailMovie ? store.reviews[detailMovie.id] : undefined;
 
   return (
-    <main className="min-h-screen pb-28 sm:pb-8">
+    <main className="min-h-screen pb-[calc(6.5rem+env(safe-area-inset-bottom))] sm:pb-8">
       <Header />
 
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-4 sm:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-3 sm:gap-5 sm:px-6">
         <StatsBar {...store.counts} />
 
-        <FilterPanel filters={filters} onChange={setFilters} availableCount={recommendationPool.length} />
+        <div className="hidden sm:block">
+          <FilterPanel filters={filters} onChange={setFilters} availableCount={recommendationPool.length} />
+        </div>
 
-        <section className="grid items-start gap-5 lg:grid-cols-[320px_430px_1fr]">
-          <aside className="glass rounded-[28px] p-4">
+        <section className="grid items-start gap-4 lg:grid-cols-[320px_430px_1fr] lg:gap-5">
+          <aside className="glass order-2 rounded-[24px] p-4 lg:order-1 lg:rounded-[28px]">
             <div className="flex gap-2">
               <button
                 type="button"
@@ -271,7 +273,7 @@ export default function HomePage() {
             </div>
           </aside>
 
-          <div className="space-y-4">
+          <div className="order-1 space-y-3 lg:order-2 lg:space-y-4">
             {currentMovie ? (
               <MovieCard
                 movie={currentMovie}
@@ -293,6 +295,12 @@ export default function HomePage() {
             >
               查看详情 / 写影评
             </button>
+            <details className="glass-soft rounded-[22px] p-4 text-sm text-white/75 sm:hidden">
+              <summary className="cursor-pointer font-medium text-white">筛选推荐池</summary>
+              <div className="mt-3">
+                <FilterPanel filters={filters} onChange={setFilters} availableCount={recommendationPool.length} />
+              </div>
+            </details>
             <section className="glass-soft rounded-[22px] p-4 text-sm text-white/70">
               <div className="flex items-center justify-between">
                 <span className="font-medium text-white">最近刷过</span>
@@ -317,7 +325,7 @@ export default function HomePage() {
             </section>
           </div>
 
-          <aside className="glass rounded-[28px] p-5 text-sm leading-7 text-white/75">
+          <aside className="glass order-3 rounded-[24px] p-4 text-sm leading-7 text-white/75 lg:rounded-[28px] lg:p-5">
             <div className="flex items-center justify-between">
               <span className="font-medium text-white">推荐算法</span>
               <span className="rounded-full bg-white/15 px-3 py-1 text-xs">rating x 0.6 + popularity x 0.4</span>

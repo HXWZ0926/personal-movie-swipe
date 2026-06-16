@@ -48,7 +48,7 @@ export function ReviewDialog({ movie, review, onClose, onSave }: ReviewDialogPro
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/65 p-4">
-      <section className="glass w-full max-w-2xl rounded-[28px] p-5">
+      <section className="glass max-h-[calc(100svh-2rem)] w-full max-w-2xl overflow-y-auto rounded-[24px] p-4 sm:rounded-[28px] sm:p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-sm text-white/55">评分与影评</p>
@@ -232,7 +232,7 @@ export function DetailDialog({ movie, review, onClose, onEditReview, onMovieUpda
 
   return (
     <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/65 p-4">
-      <section className="glass relative grid w-full max-w-5xl gap-5 overflow-hidden rounded-[28px] p-5 md:grid-cols-[250px_1fr]">
+      <section className="glass relative grid max-h-[calc(100svh-2rem)] w-full max-w-5xl gap-5 overflow-y-auto rounded-[24px] p-4 sm:rounded-[28px] sm:p-5 md:grid-cols-[250px_1fr]">
         {displayed.backdropUrl ? (
           <img src={displayed.backdropUrl} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-15" />
         ) : null}

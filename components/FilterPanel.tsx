@@ -24,8 +24,8 @@ export function FilterPanel({ filters, onChange, availableCount }: FilterPanelPr
   }
 
   return (
-    <section className="glass mx-auto w-full max-w-7xl rounded-[28px] p-4">
-      <div className="grid gap-3 md:grid-cols-4">
+    <section className="glass mx-auto w-full max-w-7xl rounded-[22px] p-3 sm:rounded-[28px] sm:p-4">
+      <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4">
         <label className="grid gap-1.5 text-xs text-white/60">
           作品类型
           <select

@@ -39,7 +39,7 @@ export default function StatsPage() {
   const topRated = rated.sort((a, b) => Number(b.review?.personalRating ?? 0) - Number(a.review?.personalRating ?? 0)).slice(0, 10);
 
   return (
-    <main className="min-h-screen pb-28 sm:pb-8">
+    <main className="min-h-screen pb-[calc(6.5rem+env(safe-area-inset-bottom))] sm:pb-8">
       <Header />
       <div className="mx-auto grid w-full max-w-7xl gap-6 px-4 sm:px-6">
         <section>

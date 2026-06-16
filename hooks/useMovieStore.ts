@@ -495,7 +495,44 @@ export function useMovieStore() {
           onlineMovies: uniqueMovies([...movies, ...current.onlineMovies]).slice(0, 600)
         }));
       } catch {
-        setOnlineError("在线片源暂时不可用，请稍后重试。");
+        try {
+          const page = Math.floor(Math.random() * 6);
+          const tvMaze = await fetch(`https://api.tvmaze.com/shows?page=${page}`).then((res) => res.json());
+          const movies = (Array.isArray(tvMaze) ? tvMaze : [])
+            .filter((show: any) => show.image?.medium)
+            .map((show: any): Movie => ({
+              id: `tvmaze-tv-${show.id}`,
+              title: show.name,
+              originalTitle: show.name,
+              year: getYear(show.premiered),
+              type: "tv",
+              rating: show.rating?.average ?? 0,
+              popularity: Math.min(10, Math.round(Number(show.weight ?? 0) / 10)),
+              genres: show.genres?.length ? show.genres : ["TVMaze"],
+              posterUrl: show.image?.medium ?? "",
+              backdropUrl: show.image?.original ?? "",
+              description: show.summary ? stripHtml(show.summary) : "来自 TVMaze 的在线剧集片源。",
+              source: "TVMaze 静态片源"
+            }))
+            .filter((movie: Movie) => {
+              if (filters.type === "movie") return false;
+              if (filters.genre !== "all" && !movie.genres.includes(filters.genre)) return false;
+              if (filters.minRating !== "all" && movie.rating < Number(filters.minRating)) return false;
+              return true;
+            })
+            .slice(0, 120);
+
+          setState((current) => ({
+            ...current,
+            onlineMovies: uniqueMovies([...movies, ...current.onlineMovies]).slice(0, 600)
+          }));
+
+          if (movies.length === 0) {
+            setOnlineError("静态版在线片源较少，可以放宽筛选或在设置页填写 TMDb Key。");
+          }
+        } catch {
+          setOnlineError("在线片源暂时不可用，请稍后重试。");
+        }
       } finally {
         setOnlineLoading(false);
       }

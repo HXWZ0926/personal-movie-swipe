@@ -15,7 +15,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-5 sm:px-6">
+    <header className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 pb-3 pt-[max(1rem,env(safe-area-inset-top))] sm:px-6 sm:py-5">
       <Link href="/" className="flex items-center gap-3">
         <span className="grid h-11 w-11 place-items-center rounded-[18px] border border-white/40 bg-white/85 text-[#172033] shadow-[0_18px_45px_rgba(114,241,255,.2)]">
           <Clapperboard className="h-5 w-5" />
@@ -26,7 +26,7 @@ export function Header() {
         </span>
       </Link>
 
-      <nav className="glass fixed bottom-4 left-1/2 z-30 flex -translate-x-1/2 gap-1 rounded-[24px] p-1 sm:static sm:translate-x-0">
+      <nav className="glass fixed bottom-[calc(.75rem+env(safe-area-inset-bottom))] left-1/2 z-30 flex w-[calc(100%-1.5rem)] max-w-[390px] -translate-x-1/2 justify-around gap-1 rounded-[26px] p-1.5 sm:static sm:w-auto sm:max-w-none sm:translate-x-0 sm:justify-start sm:rounded-[24px] sm:p-1">
         {links.map((link) => {
           const Icon = link.icon;
           const isActive = pathname === link.href;
@@ -34,14 +34,14 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`flex items-center gap-2 rounded-[18px] px-3 py-2 text-sm transition sm:px-4 ${
+              className={`flex flex-1 flex-col items-center justify-center gap-1 rounded-[20px] px-2 py-2 text-[11px] leading-none transition sm:flex-none sm:flex-row sm:gap-2 sm:rounded-[18px] sm:px-4 sm:text-sm ${
                 isActive
                   ? "bg-white/90 text-[#172033]"
                   : "text-white/75 hover:bg-white/15 hover:text-white"
               }`}
             >
               <Icon className="h-4 w-4" />
-              <span className="hidden sm:inline">{link.label}</span>
+              <span>{link.label}</span>
             </Link>
           );
         })}
